@@ -5,7 +5,8 @@ const bodyparser = require('body-parser');
 const port = 3000;
 
 
-const Router = require('./Router/authrouter');
+const authRouter = require('./Router/authrouter');
+const userRouter = require('./Router/userrouter');
 const connectdb = require('./db');
 
 
@@ -13,16 +14,16 @@ app.use(bodyparser.json());
 
 
 // router is hear
-app.use("/auth/api", Router);
+app.use("/auth/api", authRouter);
+app.use("/user/api", userRouter);
 
 // connectdb ......
-connectdb().then(() => {
-    app.listen(port, (req, res) => {
+app.listen(port, (req, res) => {
+      connectdb();
 
-        console.log(`the server run in port :${port}`)
-    })
+    console.log(`the server run in port :${port}`)
+});
 
-})
 
 
 
