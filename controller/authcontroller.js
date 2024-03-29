@@ -28,7 +28,7 @@ const home = async (req, res) => {
         const authtoken = await jwt.sign(data, process.env.jwt_key);
 
 
-        return res.status(200).json({ successfull: "true", authtoken })
+        return res.status(200).json({ message: "Registation is successfull", authtoken })
 
     } catch (error) {
         return res.status(500).json({ message: "internal server error." });
@@ -60,7 +60,7 @@ const login = async (req, res) => {
         const authtoken = await jwt.sign(data, process.env.jwt_key);
 
 
-        res.status(200).json({ message: "login is successfull...", authtoken: authtoken });
+        res.status(200).json({ message: "Login is successfull...", authtoken: authtoken });
 
 
 
@@ -82,6 +82,7 @@ const getuser = async (req, res) => {
         res.status(400).json({ message: "user not found" });
 
     }
+    
     res.json(user)
 
 }
