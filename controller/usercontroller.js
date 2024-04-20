@@ -5,10 +5,22 @@ const addnote = async (req, res) => {
     try {
         const { title, description, tag } = req.body;
 
-        const notes = await Note.create({ title, description, tag, user: req.user.id })
-        res.json(notes)
+        const currentDate = new Date();
+        const formattedDate = currentDate.toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: 'short',
+            day: 'numeric'
+        });
+        if (title !== null && description !== null && tag !== null) {
 
-        res.send("notes")
+            const notes = await Note.create({
+                title, description, tag, user: req.user.id, date: formattedDate
+            })
+
+
+            res.status(200).json({ message: "successfull add notes", notes: notes })
+        }
+        // res.send("notes")
     } catch (error) {
         return res.status(500).json({ message: "internal server error." });
 

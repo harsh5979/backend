@@ -15,7 +15,11 @@ const NoteSchema = mongoose.Schema({
     },
     tag: {
         type: String
+    },
+    date: {
+        type: String,
+    
     }
-
+    
 })
 module.exports = new mongoose.model('Note2', NoteSchema);
