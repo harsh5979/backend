@@ -1,9 +1,10 @@
 const User = require('../models/User')
 const Contact = require('../models/Contact')
+const Addpractical = require('../models/Addpractical')
 
 const allUser = async (req, res) => {
 
-    const alluser = await User.find({},{password :0});
+    const alluser = await User.find({}, { password: 0 });
     const data = await alluser;
 
     res.json(data);
@@ -22,5 +23,23 @@ const contact = async (req, res) => {
     res.send(data)
 
 }
+const practicals = async (req, res) => {
 
-module.exports = { allUser,contact }
+    const pdata = req.body;
+    const data = await Addpractical.create(pdata)
+    // console.log(pdata)
+
+    res.send(pdata)
+
+}
+const fetchPracticals = async (req, res) => {
+
+    const practical = await Addpractical.find();
+    const data = await practical;
+
+    // res.json({data});
+    res.send(data)
+
+}
+
+module.exports = { allUser, contact, practicals,fetchPracticals }

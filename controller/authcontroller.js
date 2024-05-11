@@ -82,7 +82,7 @@ const getuser = async (req, res) => {
         res.status(400).json({ message: "user not found" });
 
     }
-    
+
     res.json(user)
 
 }

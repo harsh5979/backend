@@ -10,6 +10,7 @@ const authRouter = require('./Router/authrouter');
 const userRouter = require('./Router/userrouter');
 const contact = require('./Router/contactus')
 const admin = require('./Router/adminrouter')
+const todo =require('./Router/todorouter');
 const connectdb = require('./db');
 
 app.use(cors());
@@ -21,6 +22,7 @@ app.use("/auth/api", authRouter);
 app.use("/user/api", userRouter);
 app.use("/con/api", contact);
 app.use("/adminpanel/api", admin);
+app.use("/tmko/",todo);
 
 // connectdb ......
 app.listen(port, (req, res) => {
