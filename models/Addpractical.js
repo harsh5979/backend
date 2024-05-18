@@ -11,7 +11,7 @@ const PracticalSchema = mongoose.Schema({
     },
     ans: {
         type: String,
-        required: true,
+       
     }
 
 

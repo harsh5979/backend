@@ -6,7 +6,7 @@ const admincontroller = require('../controller/admincontroller');
 
 router.get('/userpanel', middleware,adminmiddleware, admincontroller.allUser);
 router.get('/contactpanel', middleware,adminmiddleware, admincontroller.contact);
-router.get('/fetchPracticals', admincontroller.fetchPracticals);
+router.get('/fetchPracticals/:pr', admincontroller.fetchPracticals);
 router.post('/addpractical',  admincontroller.practicals);
 
 

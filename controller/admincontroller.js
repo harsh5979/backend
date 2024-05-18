@@ -33,8 +33,9 @@ const practicals = async (req, res) => {
 
 }
 const fetchPracticals = async (req, res) => {
+   
 
-    const practical = await Addpractical.find();
+    const practical = await Addpractical.find({"set":req.params.pr});
     const data = await practical;
 
     // res.json({data});
