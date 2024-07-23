@@ -1,6 +1,7 @@
 const User = require('../models/User')
 const Contact = require('../models/Contact')
 const Addpractical = require('../models/Addpractical')
+const client = require("../redis");
 
 const allUser = async (req, res) => {
 
@@ -76,10 +77,18 @@ const practicals = async (req, res) => {
 
 }
 const fetchPracticals = async (req, res) => {
-
+const cachekey = `datas:${req.params.pr}`;
+    const cachevalue = await client.get(cachekey);
+    if (cachevalue) {
+       return res.json(JSON.parse(cachevalue));
+        
+    }
 
     const practical = await Addpractical.find({ "set": req.params.pr });
     const data = await practical;
+
+    await client.set(cachekey,JSON.stringify(practical));
+    // await client.expire("datas",120);
 
     // res.json({data});
     res.send(data)

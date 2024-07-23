@@ -23,7 +23,7 @@ const home = async (req, res) => {
         const data = {
             usercreate: {
                 id: usercreate.id,
-                admin:usercreate.isadmin
+                admin: usercreate.isadmin
             }
         }
         const authtoken = await jwt.sign(data, process.env.jwt_key);
@@ -56,7 +56,7 @@ const login = async (req, res) => {
         const data = {
             usercreate: {
                 id: userExist.id,
-                admin:userExist.isadmin
+                admin: userExist.isadmin
             }
         }
         const authtoken = await jwt.sign(data, process.env.jwt_key);
