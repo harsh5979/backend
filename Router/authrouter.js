@@ -14,6 +14,11 @@ router.route("/login").post(authcontroller.login);
 router.post('/getuser', middleware, authcontroller.getuser);
 
 
+// Router:3   get user   request post :"/auth/api/getuser"
+router.post('/change-password',authcontroller.changepassword);
+
+
+
 
 
 
